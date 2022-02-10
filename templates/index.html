@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        What items to randomize?<br>
+        <textarea rows="30" cols="100" placeholder="Type in a list of items, each one on a different line" name="items" required></textarea>
+        <br><br>
+        How many random values to select?<br>
+        <input type="number" placeholder="e.g. 2" name="count" required>
+        <br><br>
+        <input type="submit" value="Randomize">
+    </form>
+{% endblock %}
