@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><i class="fas fa-dice-d20"></i> Randomizer</a>
+    <a class="navbar-brand" href="{% url 'index_view' %}"><i class="fas fa-dice-d20"></i> Randomizer</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,19 +8,15 @@
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fas fa-list"> </i> List</a>
+          <a {% if request.resolver_match.url_name == 'index_view' %}class="nav-link active" {% else %}class="nav-link"{% endif %} href="{% url 'index_view' %}"><i class="fas fa-list"> </i> List</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-percentage"> </i> Number</a>
+            <a {% if request.resolver_match.url_name == 'number_view' %}class="nav-link active" {% else %}class="nav-link"{% endif %} href="{% url 'number_view' %}"><i class="fas fa-percentage"> </i> Number</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fas fa-thumbs-up"> </i> Flip a coin!</a>
+          <a {% if request.resolver_match.url_name == 'coin_view' %}class="nav-link active" {% else %}class="nav-link"{% endif %} href="{% url 'coin_view' %}"><i class="fas fa-thumbs-up"> </i> Flip a coin!</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>

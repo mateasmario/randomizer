@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="numberInput" class="form-label">Select the lower bounds</label>
+            <input class="form-control" type="number" placeholder="Lower bounds" value="{{ lower }}" name="lower" required>
+        </div>
+        <div class="form-group">
+            <label for="numberInput" class="form-label mt-4">Select the upper bounds</label>
+            <input class="form-control" type="number" placeholder="Upper bounds" value="{{ upper }}" name="upper" required>
+        </div>
+        <div class="form-group">
+            <label for="numberInput" class="form-label mt-4">How many numbers to generate?</label>
+            <input class="form-control" type="number" placeholder="Type in the number of random elements you want to output" value="{{ upper }}" name="count" required>
+        </div>
+        <br>
+        <input type="submit" class="btn btn-primary" value="Randomize">
+    </form>
+
+    {% if randList %}
+        <ul class="list-group mt-4">
+            {% for el in randList %}
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                      {{ el }}
+                  </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

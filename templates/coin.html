@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <center>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" value="Flip">
+        </form>
+
+        <div class="mt-4"></div>
+        {% if result %}
+            You look at your coin and see: <b>{{ result }}</b>
+        {% endif %}
+    </center>
+{% endblock %}

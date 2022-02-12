@@ -4,13 +4,23 @@
         {% csrf_token %}
         <div class="form-group">
             <label for="textArea" class="form-label">Items to randomize</label>
-            <textarea class="form-control" id="textArea" rows="15" placeholder="Type in a list of items, each one on a different line" name="items" required></textarea>
+            <textarea class="form-control" id="textArea" rows="15" placeholder="Type in a list of items, each one on a different line" name="items" required>{{ previousItems }}</textarea>
         </div>
         <div class="form-group">
             <label for="numberInput" class="form-label mt-4">How many random values to select?</label>
-            <input class="form-control" type="number" placeholder="Type in the number of random elements you want to output" name="count" required>
+            <input class="form-control" type="number" placeholder="Type in the number of random elements you want to output" value="{{ previousCount }}" name="count" required>
         </div>
         <br>
         <input type="submit" class="btn btn-primary" value="Randomize">
     </form>
+
+    {% if randList %}
+        <ul class="list-group mt-4">
+            {% for el in randList %}
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                      {{ el }}
+                  </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}

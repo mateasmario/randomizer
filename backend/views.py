@@ -3,7 +3,6 @@ import random as rand
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
-
 # Create your views here.
 
 def index_view(request):
@@ -13,10 +12,13 @@ def index_view(request):
         items = request.POST['items']
         count = request.POST['count']
 
+        context['previousItems'] = items
+        context['previousCount'] = count
+
         lst = items.split('\n')
         if int(count) > len(lst):
             messages.add_message(request, messages.ERROR, "You are trying to extract more elements than provided.")
-            return redirect('/')
+            return render(request, "index.html", context)
 
         lstProcessed = []
 
@@ -42,6 +44,44 @@ def index_view(request):
 
         context['randList'] = randList
 
-        return render(request, "randomized.html", context)
+        return render(request, "index.html", context)
     else:
         return render(request, "index.html")
+
+def number_view(request):
+    if request.method == "POST":
+        context = {}
+
+        lower = request.POST['lower']
+        upper = request.POST['upper']
+        count = request.POST['count']
+        context['lower'] = lower
+        context['upper'] = upper
+        context['count'] = count
+
+        if int(lower) >= int(upper):
+            messages.add_message(request, messages.ERROR, "The lower bounds should be strictly smaller than the upper bounds.")
+            return render(request, "number.html", context)
+
+        randList = []
+
+        for i in range(0, int(count)):
+            randList.append(rand.randrange(int(lower), int(upper)+1))
+
+        context['randList'] = randList
+
+        return render(request, "number.html", context)
+    else:
+        return render(request, "number.html")
+
+def coin_view(request):
+    if request.method == "POST":
+        context = {}
+        no = rand.randrange(0, 2)
+        if (no == 0):
+            context['result'] = 'Heads'
+        else:
+            context['result'] = 'Tails'
+        return render(request, "coin.html", context)
+    else:
+        return render(request, "coin.html")
