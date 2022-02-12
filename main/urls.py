@@ -20,7 +20,8 @@ from backend.views import *
 
 urlpatterns = [
     path('', index_view, name="index_view"),
+    path('admin/', admin.site.urls),
     path('number/', number_view, name="number_view"),
     path('flip-a-coin/', coin_view, name="coin_view"),
-    path('admin/', admin.site.urls),
+    path('feedback/', feedback_view, name="feedback_view"),
 ]

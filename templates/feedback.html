@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="textInput" class="form-label">Your Name</label>
+            <input type="text" class="form-control" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="textArea" class="form-label mt-4">Feedback</label>
+            <textarea class="form-control" id="textArea" rows="15" placeholder="Your feedback message" name="message" required></textarea>
+        </div>
+        <br>
+        <input type="submit" class="btn btn-primary" value="Send feedback">
+    </form>
+{% endblock %}

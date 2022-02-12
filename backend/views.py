@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from backend.models import Feedback
+
 
 def index_view(request):
     if request.method == "POST":
@@ -85,3 +87,11 @@ def coin_view(request):
         return render(request, "coin.html", context)
     else:
         return render(request, "coin.html")
+
+def feedback_view(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        message = request.POST['message']
+        Feedback.objects.create(name=name, message=message)
+        messages.add_message(request, messages.SUCCESS, "Feedback has been sent to the website creator. Thank you!")
+    return render(request, "feedback.html")

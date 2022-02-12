@@ -8,14 +8,19 @@
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a {% if request.resolver_match.url_name == 'index_view' %}class="nav-link active" {% else %}class="nav-link"{% endif %} href="{% url 'index_view' %}"><i class="fas fa-list"> </i> List</a>
+          <a {% if request.resolver_match.url_name == 'index_view' %}class="nav-link active" {% else %}class="nav-link"{% endif %} href="{% url 'index_view' %}">List</a>
         </li>
         <li class="nav-item">
-            <a {% if request.resolver_match.url_name == 'number_view' %}class="nav-link active" {% else %}class="nav-link"{% endif %} href="{% url 'number_view' %}"><i class="fas fa-percentage"> </i> Number</a>
+            <a {% if request.resolver_match.url_name == 'number_view' %}class="nav-link active" {% else %}class="nav-link"{% endif %} href="{% url 'number_view' %}">Number</a>
         </li>
         <li class="nav-item">
-          <a {% if request.resolver_match.url_name == 'coin_view' %}class="nav-link active" {% else %}class="nav-link"{% endif %} href="{% url 'coin_view' %}"><i class="fas fa-thumbs-up"> </i> Flip a coin!</a>
+          <a {% if request.resolver_match.url_name == 'coin_view' %}class="nav-link active" {% else %}class="nav-link"{% endif %} href="{% url 'coin_view' %}">Flip a coin!</a>
         </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a {% if request.resolver_match.url_name == 'feedback_view' %}class="nav-link active" {% else %}class="nav-link"{% endif %} href="{% url 'feedback_view' %}"><i class="fas fa-star"> </i> Feedback</a>
+          </li>
       </ul>
     </div>
   </div>
