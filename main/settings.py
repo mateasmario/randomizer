@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-p8$a)9q9@^$j3lg4#x(t766bn5dd!s09vx^n=*)(zv9b0j2e2%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['randomize.live', 'randomizerwebapp.herokuapp.com', 'localhost', '127.0.0.1']
 
