@@ -4,7 +4,13 @@
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <title>Randomizer</title>
+      {% if request.resolver_match.url_name == 'index_view' %}
+        <title>List - Randomizer</title>
+      {% elif request.resolver_match.url_name == 'number_view' %}
+        <title>Number - Randomizer</title>
+      {% elif request.resolver_match.url_name == 'coin_view' %}
+          <title>Flip a Coin - Randomizer</title>
+      {% endif %}
       <meta name="author" content="name">
       <meta name="description" content="description here">
       <meta name="keywords" content="keywords,here">
