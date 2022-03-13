@@ -18,6 +18,9 @@ def index_view(request):
         context['previousCount'] = count
 
         lst = items.split('\n')
+        if lst[-1] == "":
+            lst.remove(lst[-1])
+
         if int(count) > len(lst):
             messages.add_message(request, messages.ERROR, "You are trying to extract more elements than provided.")
             return render(request, "index.html", context)
